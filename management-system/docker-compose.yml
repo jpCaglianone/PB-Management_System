@@ -1,0 +1,24 @@
+services:
+  mgs-mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: management_system
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: verySecret
+      MYSQL_USER: tg
+    ports:
+      - '3306:3306'
+    volumes:
+      - mgs-mysql_data:/var/lib/mysql
+    restart: always
+    networks:
+      - managementSystemNetwork
+
+networks:
+  managementSystemNetwork:
+    driver: bridge
+
+volumes:
+  mgs-mysql_data:
+
+
